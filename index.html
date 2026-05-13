@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tanvi Nallapu | AI & Full Stack Developer</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ICONS -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Sora',sans-serif;
+    }
+
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND EFFECTS */
+
+    .glow1{
+      position:fixed;
+      width:450px;
+      height:450px;
+      background:#00f7ff;
+      filter:blur(180px);
+      opacity:0.15;
+      top:-120px;
+      left:-120px;
+      z-index:-1;
+    }
+
+    .glow2{
+      position:fixed;
+      width:450px;
+      height:450px;
+      background:#7c3aed;
+      filter:blur(180px);
+      opacity:0.18;
+      bottom:-120px;
+      right:-120px;
+      z-index:-1;
+    }
+
+    /* NAVBAR */
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:22px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(18px);
+      background:rgba(255,255,255,0.03);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:34px;
+      font-weight:800;
+      background:linear-gradient(to right,#00f7ff,#7c3aed);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:35px;
+      position:relative;
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    nav a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#00f7ff;
+      transition:0.3s;
+    }
+
+    nav a:hover::after{
+      width:100%;
+    }
+
+    nav a:hover{
+      color:#00f7ff;
+    }
+
+    section{
+      padding:120px 8%;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:900px;
+      z-index:2;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:12px 24px;
+      border-radius:50px;
+      background:rgba(0,247,255,0.1);
+      border:1px solid rgba(0,247,255,0.3);
+      color:#00f7ff;
+      margin-bottom:30px;
+      font-size:14px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      50%{
+        transform:translateY(-6px);
+      }
+    }
+
+    .hero h1{
+      font-size:90px;
+      line-height:1;
+      margin-bottom:25px;
+      font-weight:800;
+    }
+
+    .hero h1 span{
+      background:linear-gradient(to right,#00f7ff,#7c3aed);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero h3{
+      font-size:30px;
+      color:#94a3b8;
+      margin-bottom:30px;
+      font-weight:500;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#cbd5e1;
+      line-height:2;
+      max-width:750px;
+      margin:auto;
+    }
+
+    /* BUTTONS */
+
+    .buttons{
+      margin-top:45px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 34px;
+      border-radius:60px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.4s;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .primary-btn{
+      background:linear-gradient(45deg,#00f7ff,#7c3aed);
+      color:white;
+      box-shadow:0 10px 40px rgba(0,247,255,0.25);
+    }
+
+    .primary-btn:hover{
+      transform:translateY(-8px);
+    }
+
+    .outline-btn{
+      border:2px solid #00f7ff;
+      color:#00f7ff;
+    }
+
+    .outline-btn:hover{
+      background:#00f7ff;
+      color:black;
+    }
+
+    /* STATS */
+
+    .stats{
+      margin-top:70px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:25px;
+    }
+
+    .stat-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:25px;
+      backdrop-filter:blur(15px);
+      transition:0.4s;
+    }
+
+    .stat-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 40px rgba(0,247,255,0.15);
+    }
+
+    .stat-card h2{
+      font-size:40px;
+      color:#00f7ff;
+      margin-bottom:10px;
+    }
+
+    .stat-card p{
+      color:#cbd5e1;
+    }
+
+    /* SECTION TITLE */
+
+    .title{
+      text-align:center;
+      font-size:55px;
+      margin-bottom:70px;
+      font-weight:800;
+    }
+
+    .title span{
+      color:#00f7ff;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:35px;
+      padding:60px;
+      text-align:center;
+      line-height:2;
+      color:#cbd5e1;
+      font-size:18px;
+      backdrop-filter:blur(15px);
+    }
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:35px;
+    }
+
+    .project-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:30px;
+      padding:35px;
+      position:relative;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-12px);
+      box-shadow:0 15px 45px rgba(0,247,255,0.15);
+    }
+
+    .project-card::before{
+      content:'';
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:#00f7ff;
+      filter:blur(100px);
+      top:-50px;
+      right:-50px;
+      opacity:0.25;
+    }
+
+    .project-card i{
+      font-size:45px;
+      color:#00f7ff;
+      margin-bottom:22px;
+    }
+
+    .project-card h3{
+      font-size:28px;
+      margin-bottom:18px;
+    }
+
+    .project-card p{
+      color:#cbd5e1;
+      line-height:1.9;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:25px;
+    }
+
+    .skill{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:25px;
+      padding:30px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .skill:hover{
+      background:linear-gradient(45deg,#00f7ff,#7c3aed);
+      transform:scale(1.06);
+    }
+
+    .skill i{
+      font-size:38px;
+      margin-bottom:15px;
+    }
+
+    .skill h4{
+      font-size:20px;
+    }
+
+    /* TIMELINE */
+
+    .timeline{
+      border-left:3px solid #00f7ff;
+      padding-left:30px;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .timeline-item{
+      background:rgba(255,255,255,0.05);
+      border-radius:25px;
+      padding:30px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.3s;
+    }
+
+    .timeline-item:hover{
+      transform:translateX(10px);
+    }
+
+    .timeline-item h3{
+      color:#00f7ff;
+      margin-bottom:10px;
+    }
+
+    .timeline-item p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:35px;
+      padding:60px;
+    }
+
+    .contact p{
+      margin:18px 0;
+      color:#cbd5e1;
+      font-size:18px;
+    }
+
+    .socials{
+      margin-top:35px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .socials a{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-decoration:none;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      color:white;
+      font-size:24px;
+      transition:0.3s;
+    }
+
+    .socials a:hover{
+      background:linear-gradient(45deg,#00f7ff,#7c3aed);
+      transform:translateY(-8px);
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.08);
+      margin-top:60px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      nav{
+        display:none;
+      }
+
+      .hero h1{
+        font-size:55px;
+      }
+
+      .hero h3{
+        font-size:22px;
+      }
+
+      .title{
+        font-size:40px;
+      }
+
+      .buttons{
+        flex-direction:column;
+        align-items:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">Tanvi.</div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        ✨ Software Developer 
+      </div>
+
+      <h1>
+        <span>Tanvi Nallapu</span>
+      </h1>
+
+      <h3>
+        Building Smart AI-Powered Digital Experiences
+      </h3>
+
+      <p>
+        Passionate Computer Science Engineering student specializing
+        in Artificial Intelligence, Machine Learning, Full Stack
+        Development, and scalable software systems using modern
+        technologies like Java, Python, React.js, Flask, SQL,
+        and intelligent AI solutions.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#" class="btn primary-btn">
+          <i class="fa-solid fa-download"></i>
+          Download Resume
+        </a>
+
+        <a href="#contact" class="btn outline-btn">
+          <i class="fa-solid fa-paper-plane"></i>
+          Contact Me
+        </a>
+
+      </div>
+
+      <!-- STATS -->
+
+      <div class="stats">
+
+        <div class="stat-card">
+          <h2>3+</h2>
+          <p>AI Projects</p>
+        </div>
+
+        <div class="stat-card">
+          <h2>8.58</h2>
+          <p>Current CGPA</p>
+        </div>
+
+        <div class="stat-card">
+          <h2>10+</h2>
+          <p>Certifications</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h1 class="title">
+      About <span>Me</span>
+    </h1>
+
+    <div class="about">
+
+      I am a passionate Computer Science Engineering student at
+      CMR Institute of Technology with strong foundations in
+      programming, Artificial Intelligence, and modern web technologies.
+
+      I enjoy building scalable AI-driven applications and innovative
+      digital solutions using Java, Python, React.js, Flask, SQL,
+      Machine Learning, and NLP technologies.
+
+      My goal is to become a highly skilled Software Engineer
+      specializing in AI and Full Stack Development while creating
+      impactful real-world software solutions.
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <h1 class="title">
+      Featured <span>Projects</span>
+    </h1>
+
+    <div class="projects">
+
+      <div class="project-card">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <h3>Customer Churn Prediction</h3>
+
+        <p>
+          Built an AI-powered telecom churn prediction system
+          using Machine Learning algorithms like Random Forest
+          and Decision Tree with Flask, React, Pandas,
+          and Scikit-learn for real-time customer analysis.
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <i class="fa-solid fa-robot"></i>
+
+        <h3>Finance GPT</h3>
+
+        <p>
+          Developed an intelligent AI assistant using NLP and Flask
+          capable of explaining budgeting, taxes, investments,
+          and financial concepts through real-time query processing.
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <i class="fa-solid fa-seedling"></i>
+
+        <h3>AI Crop Advisor</h3>
+
+        <p>
+          Developed an AI-powered crop advisory system using
+          Machine Learning, Flask, React, and Weather API integration
+          to recommend suitable crops and fertilizer suggestions
+          based on soil and weather conditions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h1 class="title">
+      Technical <span>Skills</span>
+    </h1>
+
+    <div class="skills">
+
+      <div class="skill">
+        <i class="fa-brands fa-java"></i>
+        <h4>Java</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-python"></i>
+        <h4>Python</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-react"></i>
+        <h4>React.js</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-node-js"></i>
+        <h4>Node.js</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-solid fa-database"></i>
+        <h4>SQL</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-solid fa-brain"></i>
+        <h4>Machine Learning</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-solid fa-code"></i>
+        <h4>Full Stack</h4>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-github"></i>
+        <h4>GitHub</h4>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+
+    <h1 class="title">
+      Education & <span>Achievements</span>
+    </h1>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <h3>B.Tech – Computer Science Engineering</h3>
+
+        <p>
+          CMR Institute of Technology | 2023 – 2027 <br>
+          CGPA: 8.58 / 10
+        </p>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <h3>Intermediate</h3>
+
+        <p>
+          SR Junior College | 2021 – 2023 <br>
+          Percentage: 96%
+        </p>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <h3>Certifications</h3>
+
+        <p>
+          Infosys Springboard • IBM SkillsBuild • Microsoft & EY •
+          AWS Cloud Foundations • Cisco Networking Academy •
+          ServiceNow Fundamentals • Tech Sprint Hackathon
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h1 class="title">
+      Contact <span>Me</span>
+    </h1>
+
+    <div class="contact">
+
+      <p>📧 tanvinallapu@email.com</p>
+
+      <p>📞 +91 9391801359</p>
+
+      <p>📍 Hyderabad, India</p>
+
+      <div class="socials">
+
+        <a href="https://github.com/" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://linkedin.com/" target="_blank">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <a href="mailto:tanvinallapu@email.com">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Tanvi Nallapu • Portfolio Website
+
+  </footer>
+
+</body>
+</html>
